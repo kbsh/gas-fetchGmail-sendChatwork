@@ -20,7 +20,7 @@ var send_list = [
  */
 function fetchMailAndCallApi() {
   // Gmail検索条件
-  var condition = '(is:unread from:youkai-zabbix@youkai-dev-api.enterbrain.co.jp)';
+  var condition = '(is:unread from:xxx@xxx.com)';
 
   // 条件にマッチしたスレッドを取得
   var threads = GmailApp.search(
