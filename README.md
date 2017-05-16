@@ -20,8 +20,12 @@
 - Gmailから好きな条件で検索し、Slackへ通知します。
 - 送信時、~好きなアカウントへメンションをつけることができます。~@hereメンションをつけます。
 - 使用方法
-  - Appの登録を行い、webhook urlを取得してください（https://api.slack.com/apps）(https://imj-sys.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks)
-  - パラメータを書き換えてください。
+
+  - Appの登録を行い、webhook urlを取得してください
+    - https://api.slack.com/apps
+    - https://imj-sys.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks
+
+  - パラメータを書き換えてください。
     - CHANNEL_ID
     - BOT_NAME
     - BOT_ICON_URL
