@@ -16,7 +16,7 @@
     - ROOM_ID
     - send_list
     - gmail search condition
-- 時限のトリガーの設定をしてください。
+- 時間主導型のトリガーの設定をしてください。
 
 ## fetchMailAndSendSlack.gs
 
@@ -34,5 +34,10 @@
     - BOT_ICON_URL
     - WEBHOOK_URL
     - CONDITION
-- 時限のトリガーの設定をしてください。
+- 時間主導型のトリガーの設定をしてください。
 
+## sendChatWorkIfEndOfMonth.gs
+
+- 実行日が、月の残り営業日数N日以内であるかを判定します
+- ランダムなメッセージをチャットワークに送信します
+- 時間主導型:日タイマーのトリガーを設定してください
