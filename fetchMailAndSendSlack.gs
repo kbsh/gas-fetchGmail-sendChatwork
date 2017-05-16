@@ -4,13 +4,10 @@ var CHANNEL_ID = "#test"
 var BOT_NAME = "うさぎ。";
 // 投稿するbotのアイコンURL
 var BOT_ICON_URL = "http://hoge/image/hoge1.jpg";
-
+// webhook url
+var WEBHOOK_URL = "https://hooks.slack.com/services/xxxx/xxxx/xxxx";
 // Gmail検索条件
 var CONDITION = '(is:unread 検索条件)';
-// メンション
-var SEND_LIST = [
-  "kbsh",
-];
 
 /**
  * Gmailから取得したメッセージをslackに流します。
@@ -57,15 +54,14 @@ function fetchMailAndCallApi()
  */
 function postSlackMessage(message)
 {
-  var token = PropertiesService.getScriptProperties().getProperty('SLACK_ACCESS_TOKEN'); 
-  var slackApp = SlackApp.create(token); //SlackApp インスタンスの取得
-
-  slackApp.postMessage(
-    CHANNEL_ID,
-    message,
-    {
-      username: BOT_NAME,
-      icon_url: BOT_ICON_URL
-    }
-  );
+  var param = {
+    payload : JSON.stringify({
+      channel : CHANNEL_ID,
+      username : BOT_NAME,
+      text : message,
+      icon_url : BOT_ICON_URL
+    })
+  };
+ 
+  UrlFetchApp.fetch(WEBHOOK_URL, param);
 }
