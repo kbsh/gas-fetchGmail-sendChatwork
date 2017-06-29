@@ -25,8 +25,7 @@
 - 使用方法
 
   - Appの登録を行い、webhook urlを取得してください
-    - https://api.slack.com/apps
-    - https://imj-sys.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks
+    - https://{チーム名}.slack.com/apps/new/A0F7XDUAZ-incoming-webhooks
 
   - パラメータを書き換えてください。
     - CHANNEL_ID
