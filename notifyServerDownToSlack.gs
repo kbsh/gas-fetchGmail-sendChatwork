@@ -84,6 +84,9 @@ function setCurrentStatus(server_status)
  */
 function postSlackMessage(message)
 {
+  // メンションつける
+  message = "<!channel>\n" + message;
+
   var param = {
     payload : JSON.stringify({
       channel : CHANNEL_ID,
