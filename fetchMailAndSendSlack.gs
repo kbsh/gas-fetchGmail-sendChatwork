@@ -31,9 +31,7 @@ function fetchMailAndCallApi()
 
     // メッセージを作成
     var message_body = "";
-    for(var key = 0; key < SEND_LIST.length; key++){
-      message_body += "@" + SEND_LIST[key] + "\n";
-    }
+    message_body += "<!channel>\n";
     message_body += "\n" + ">" + subject + "\n";
     message_body += "```";
     message_body += body;
