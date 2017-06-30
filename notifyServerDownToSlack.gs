@@ -14,13 +14,13 @@ var IP_ADDRESS = "https://github.com";
 var STATUS_CODE_OK = 200;
 
 // メッセージ
-var MESSAGE_OK = "サーバー復活したやんけ！";
+var MESSAGE_OK = "復活したよ";
 var MESSAGE_NG = "サーバー落ちてるやんけ！";
 
 // サーバー状態
 var SERVER_STATUS_KEY = 'server_status';// PropertiesServiceのキー
-var SERVER_STATUS_OK = 1;// 生きてる
-var SERVER_STATUS_NG = 2;// しんでる
+var SERVER_STATUS_OK = 'status_ok';// 生きてる
+var SERVER_STATUS_NG = 'status_ng';// しんでる
 
 
 function main()
@@ -56,7 +56,11 @@ function main()
  */
 function getStatusCode(url)
 { 
-  var response = UrlFetchApp.fetch(url);
+  var response = UrlFetchApp.fetch(
+    url,
+    { muteHttpExceptions:true }// エラー時に例外になるのもキャッチ
+  );
+
   return response.getResponseCode();
 }
 
@@ -66,7 +70,7 @@ function getStatusCode(url)
  */
 function getCurrentStatus()
 {
-  PropertiesService.getScriptProperties().getProperty(SERVER_STATUS_KEY);
+  return PropertiesService.getUserProperties().getProperty(SERVER_STATUS_KEY);
 }
 
 /**
@@ -75,7 +79,7 @@ function getCurrentStatus()
  */
 function setCurrentStatus(server_status)
 {
-  PropertiesService.getScriptProperties().setProperty(SERVER_STATUS_KEY, server_status);
+  PropertiesService.getUserProperties().setProperty(SERVER_STATUS_KEY, server_status);
 }
 
 /**
