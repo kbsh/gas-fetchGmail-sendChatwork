@@ -15,7 +15,7 @@ var STATUS_CODE_OK = 200;
 
 // メッセージ
 var MESSAGE_OK = "復活したよ";
-var MESSAGE_NG = "サーバー落ちてるやんけ！";
+var MESSAGE_NG = "ステータス異常だよ！";
 
 // サーバー状態
 var SERVER_STATUS_KEY = 'server_status';// PropertiesServiceのキー
@@ -25,10 +25,17 @@ var SERVER_STATUS_NG = 'status_ng';// しんでる
 
 function main()
 {
-  // httpステータスを取得
-  var status_code = getStatusCode(IP_ADDRESS);
-  // 保存している現在の状態を取得
-  var current_status = getCurrentStatus();
+  var status_code, current_status;
+
+  try {
+    // 保存している現在の状態を取得
+    current_status = getCurrentStatus();
+    // httpステータスを取得
+    status_code = getStatusCode(IP_ADDRESS);
+  } catch(e) {
+    status_code = SERVER_STATUS_NG;
+    MESSAGE_NG = 'サーバー落ちてるやんけ\n' + e;
+  }
 
   if (current_status === undefined) {
     // 初回実行
